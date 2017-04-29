@@ -1,0 +1,102 @@
+﻿<Window x:Class="SQLiteBrowser.CreateTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:staticData="clr-namespace:SQLiteBrowser"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        
+        mc:Ignorable="d"
+        Title="Редактирование определения таблицы" 
+        Height="640" Width="480" 
+        Loaded="Window_Loaded"
+        ResizeMode = "NoResize"
+        >
+    <Window.Resources>
+        <staticData:DataTypesEnum x:Key="DataTypesEnum"/>
+    </Window.Resources>
+    <Grid Name="mainGridOfEditWindow">
+        <GroupBox Name="topBorderGB" 
+                  Margin="10,10,10,540"
+                  FontSize="10"
+                  Header="Имя таблицы">
+            <TextBox Name="tableNameTB" Margin="10,10,7,4"/>
+
+        </GroupBox>
+        <GroupBox Name="buttomBorderGB" 
+                  Margin="10,60,10,10"
+                  FontSize="10"
+                  Header="Поля таблицы">
+
+        </GroupBox>
+        
+        <Button Name="addAttributeBtn"
+                Margin="10,80,340,10"
+                Content="Добавить поле"
+                Height="20"
+                Width="85"
+                FontSize="11"
+                VerticalAlignment="Top"
+                BorderThickness="0" Click="addAttributeBtn_Click"/>
+        <Button Name="removeAttributeBtn"
+                Margin="10, 80, 160, 10"
+                Content="Удалить поле"
+                Height="20"
+                Width="85"
+                FontSize="11"
+                VerticalAlignment="Top"
+                BorderThickness="0" Click="removeAttributeBtn_Click"/>
+        <Button Name="toUpAttributeBtn"
+                Margin="70, 80, 10, 10"
+                Content="Переместить выше"
+                Height="20"
+                Width="110"
+                FontSize="10"
+                VerticalAlignment="Top"
+                BorderThickness="0"
+                Background="Transparent"
+                Click="toUpAttributeBtn_Click"/>
+        <Button Name="toDownAttributeBtn"
+                Margin="300, 80, 10, 10"
+                Content="Переместить ниже"
+                Height="20"
+                Width="110"
+                FontSize="10"
+                VerticalAlignment="Top"
+                BorderThickness="0"
+                Background="Transparent"
+                Click="toDownAttributeBtn_Click" />
+
+        <DataGrid Name="dataGrid" Margin="15,105,15,250" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Width="140" Binding="{Binding attributeName}"/>
+                
+                <DataGridTemplateColumn Header="Тип" Width="100"  x:Name="dataGridColumns">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding typeOfAttribute}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Name="typesOfAttributeCB"
+                                      Height="22"
+                                      ItemsSource="{StaticResource DataTypesEnum}"
+                                      SelectedItem="{Binding typeOfAttribute}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridCheckBoxColumn Header="Не пустое(null)" Width="100" />
+                <DataGridCheckBoxColumn Header="АИ" Width="30"/>
+                <DataGridCheckBoxColumn Header="У" Width="30"/>
+            </DataGrid.Columns>
+         </DataGrid>
+
+
+
+
+
+
+    </Grid>
+</Window>
