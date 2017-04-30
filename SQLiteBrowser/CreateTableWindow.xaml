@@ -73,14 +73,18 @@
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   CanUserReorderColumns="False"
-                  CanUserSortColumns="False">
+                  CanUserSortColumns="False"
+                  DataContextChanged="dataGrid_DataContextChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Width="140" Binding="{Binding attributeName}"/>
                 
                 <DataGridTemplateColumn Header="Тип" Width="100"  x:Name="dataGridColumns">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding typeOfAttribute}"/>
+                            <ComboBox Height="22" 
+                                      ItemsSource="{StaticResource DataTypesEnum}"
+                                      SelectedIndex="0"
+                                      />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>

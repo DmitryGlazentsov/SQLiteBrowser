@@ -23,3 +23,4 @@ D:\E\Git\Csharp\SQLiteBrowser\SQLiteBrowser\bin\Debug\System.Data.SQLite.dll.con
 D:\E\Git\Csharp\SQLiteBrowser\SQLiteBrowser\obj\Debug\CreateTableWindow.g.cs
 D:\E\Git\Csharp\SQLiteBrowser\SQLiteBrowser\obj\Debug\CreateTableWindow.baml
 D:\E\Git\Csharp\SQLiteBrowser\SQLiteBrowser\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\E\Git\Csharp\SQLiteBrowser\SQLiteBrowser\obj\Debug\SQLiteBrowser.csprojResolveAssemblyReference.cache

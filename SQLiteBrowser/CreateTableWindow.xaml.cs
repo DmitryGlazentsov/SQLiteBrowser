@@ -57,11 +57,45 @@ namespace SQLiteBrowser
         }
         private void toUpAttributeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (dataGrid.SelectedItem != null)
+            {
+                var selectedItem = (Attribute)dataGrid.SelectedItem;
+                var indexOfSelectedItem = attributeList.IndexOf(selectedItem);
+                
+                if(indexOfSelectedItem > 0)
+                {
+                    Attribute tmp = attributeList[indexOfSelectedItem-1];
+                    attributeList[indexOfSelectedItem - 1] = selectedItem;
+                    attributeList[indexOfSelectedItem] = tmp;
+                }
+                dataGrid.Items.Refresh();
+            }
+            
         }
         private void toDownAttributeBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(dataGrid.SelectedItem != null)
+            {
+                var selectedItem = (Attribute)dataGrid.SelectedItem;
+                var indexOfSelectedItem = attributeList.IndexOf(selectedItem);
 
+                if(indexOfSelectedItem < dataGrid.Items.Count-1)
+                { 
+                    Attribute tmp = attributeList[indexOfSelectedItem + 1];
+                    attributeList[indexOfSelectedItem + 1] = selectedItem;
+                    attributeList[indexOfSelectedItem] = tmp;
+                }
+            }
+            dataGrid.Items.Refresh();
+        }
+
+        private void dataGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var rowsCount = dataGrid.Items.Count;
+            for(int i =0; i<rowsCount; i++)
+            {
+                attributeList[i] = (Attribute)dataGrid.Items.GetItemAt(i);
+            }
         }
     }
 }
