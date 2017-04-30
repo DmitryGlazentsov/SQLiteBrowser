@@ -17,19 +17,7 @@ namespace SQLiteBrowser
     /// <summary>
     /// Interaction logic for CreateTableWindow.xaml
     /// </summary>
-
-    //public class dataTypesEnum:List<string>
-    //{
-    //    public dataTypesEnum() { 
-    //        this.Add("INTEGER");
-    //        this.Add("TEXT");
-    //        this.Add("BLOB");
-    //        this.Add("REAL");
-    //        this.Add("NUMERIC");
-    //    }
-    //}
-
-    
+      
     public partial class CreateTableWindow : Window
     {
         public CreateTableWindow()
@@ -59,17 +47,13 @@ namespace SQLiteBrowser
                     isNullAttribute = false,
                     uniqeProperty = false
                 });
-
-            dataGrid.ItemsSource = attributeList;
+            dataGrid.Items.Refresh();
         }
         private void removeAttributeBtn_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = dataGrid.SelectedItem;
-            foreach (var item in attributeList)
-            {
-                //if(item.attributeName == selectedItem.
-            }
-
+            var selectedItem = (Attribute)dataGrid.SelectedItem;
+            attributeList.Remove(selectedItem);
+            dataGrid.Items.Refresh();
         }
         private void toUpAttributeBtn_Click(object sender, RoutedEventArgs e)
         {

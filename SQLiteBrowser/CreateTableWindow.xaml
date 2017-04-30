@@ -67,7 +67,13 @@
                 Background="Transparent"
                 Click="toDownAttributeBtn_Click" />
 
-        <DataGrid Name="dataGrid" Margin="15,105,15,250" AutoGenerateColumns="False">
+        <DataGrid Name="dataGrid" 
+                  Margin="15,105,15,250" 
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="False"
+                  CanUserSortColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Width="140" Binding="{Binding attributeName}"/>
                 
