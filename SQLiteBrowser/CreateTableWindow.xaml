@@ -85,7 +85,7 @@
                             <ComboBox Height="22" 
                                       ItemsSource="{StaticResource DataTypesEnum}"
                                       SelectedIndex="0"
-                                      SelectedItem="{Binding Path=typeOfAttribute, Mode=TwoWay}"
+                                      SelectedItem="{Binding Path=typeOfAttribute,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -95,7 +95,7 @@
                                       Height="22"
                                       ItemsSource="{StaticResource DataTypesEnum}"
                                       SelectedValue="{Binding typeOfAttribute}"
-                                      SelectedItem="{Binding typeOfAttribute}"
+                                      SelectedItem="{Binding typeOfAttribute, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                                      
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
