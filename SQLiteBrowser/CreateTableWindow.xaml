@@ -66,15 +66,16 @@
                 BorderThickness="0"
                 Background="Transparent"
                 Click="toDownAttributeBtn_Click" />
-
+        
         <DataGrid Name="dataGrid" 
                   Margin="15,105,15,250" 
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   CanUserReorderColumns="False"
-                  CanUserSortColumns="False"
-                  DataContextChanged="dataGrid_DataContextChanged">
+                  CanUserSortColumns="False" 
+                  CellEditEnding="dataGrid_CellEditEnding"
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Width="140" Binding="{Binding attributeName}"/>
                 
@@ -84,6 +85,7 @@
                             <ComboBox Height="22" 
                                       ItemsSource="{StaticResource DataTypesEnum}"
                                       SelectedIndex="0"
+                                      SelectedItem="{Binding Path=typeOfAttribute, Mode=TwoWay}"
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -92,14 +94,16 @@
                             <ComboBox Name="typesOfAttributeCB"
                                       Height="22"
                                       ItemsSource="{StaticResource DataTypesEnum}"
-                                      SelectedItem="{Binding typeOfAttribute}"/>
+                                      SelectedValue="{Binding typeOfAttribute}"
+                                      SelectedItem="{Binding typeOfAttribute}"
+                                      />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                
-                <DataGridCheckBoxColumn Header="Не пустое(null)" Width="100" />
-                <DataGridCheckBoxColumn Header="АИ" Width="30"/>
-                <DataGridCheckBoxColumn Header="У" Width="30"/>
+
+                <DataGridCheckBoxColumn Header="Не пустое(null)" Width="100" Binding="{Binding isNullAttribute }"  />
+                <DataGridCheckBoxColumn Header="АИ" Width="30" Binding="{Binding autoIncrementProperty}"/>
+                <DataGridCheckBoxColumn Header="У" Width="30" Binding="{Binding uniqeProperty}"/>
             </DataGrid.Columns>
          </DataGrid>
 

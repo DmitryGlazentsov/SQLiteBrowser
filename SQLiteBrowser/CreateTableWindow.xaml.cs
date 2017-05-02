@@ -88,14 +88,35 @@ namespace SQLiteBrowser
             }
             dataGrid.Items.Refresh();
         }
-
-        private void dataGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        System.Data.DataRowView tmp;
+        private void dataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            var rowsCount = dataGrid.Items.Count;
-            for(int i =0; i<rowsCount; i++)
-            {
-                attributeList[i] = (Attribute)dataGrid.Items.GetItemAt(i);
-            }
+            tmp = e.Row.Item as System.Data.DataRowView;
+            Attribute atr1 = new Attribute();
+            atr1.typeOfAttribute = (dataGrid.SelectedItem as Attribute).typeOfAttribute;
         }
+
+        private void typesOfAttributeCB_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
+        //private void dataGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        //{
+        //    var rowsCount = dataGrid.Items.Count;
+        //    for(int i =0; i<rowsCount; i++)
+        //    {
+        //        attributeList[i] = (Attribute)dataGrid.Items.GetItemAt(i);
+        //    }
+        //}
+
+        //private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    var rowsCount = dataGrid.Items.Count;
+        //    for (int i = 0; i < rowsCount; i++)
+        //    {
+        //        attributeList[i] = dataGrid.Items.GetItemAt(i) as Attribute;
+        //    }
+        //}
     }
 }

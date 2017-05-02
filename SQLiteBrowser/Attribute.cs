@@ -10,11 +10,11 @@ namespace SQLiteBrowser
 {
     class Attribute
     {
-        public string       attributeName           { get; set; }
-        public string       typeOfAttribute         { get; set; }
-        public bool         isNullAttribute         { get; set; }
-        public bool         autoIncrementProperty   { get; set; }
-        public bool         uniqeProperty           { get; set; }
+        public string attributeName { get; set; }
+        public string typeOfAttribute { get; set; }
+        public bool isNullAttribute         { get; set; }
+        public bool autoIncrementProperty   { get; set; }
+        public bool uniqeProperty           { get; set; }
 
     }
 
